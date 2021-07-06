@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <select class="" id="songSelect" name="">
+      <option value="song1" id="song1">Song 1</option>
+    </select>
+     <button type="button" id="submit" name="button">Click me</button>
+  </body>
+  <script type="text/javascript">
+    var urlEnd = "4uMhAVYx5R4SvILLWR1Y0J";
+    document.getElementById('submit').addEventListener('click',function(){
+      const settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://unsa-unofficial-spotify-api.p.rapidapi.com/search?query=krypton%20fanfare&count=20&type=tracks",
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "e654d75ca5msh5a28e58f26eb8ffp167829jsnf0cfcfd59b55",
+		"x-rapidapi-host": "unsa-unofficial-spotify-api.p.rapidapi.com"
+	}
+};
+
+$.ajax(settings).done(function (response) {
+
+  console.log(response["Results"][0]['album']);
+  const obj = JSON.parse(response["Results"][0]);
+	console.log(obj);
+});
+    })
+
+//https://rapidapi.com/shekhar1000.sc/api/unsa-unofficial-spotify-api/
+  </script>
+</html>
