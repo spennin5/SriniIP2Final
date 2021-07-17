@@ -214,11 +214,15 @@ document.getElementById('submit').addEventListener('click',function(){
 
 document.getElementById('searchSelect').addEventListener('change',function(){
   selectedSearchType = document.getElementById('searchSelect').value;
+  document.getElementById('queryInput').style.visibility = 'visible';
+  document.getElementById('submit').style.visibility = 'visible';
   if (selectedSearchType[0] == 'A') {
     document.getElementById('searchHeader').innerHTML = 'Search for an '+selectedSearchType;
+    document.getElementById('queryInput').placeholder = 'Search for an '+selectedSearchType;
   }
   else{
     document.getElementById('searchHeader').innerHTML = 'Search for a '+selectedSearchType;
+    document.getElementById('queryInput').placeholder = 'Search for a '+selectedSearchType;
   }
 
 })
