@@ -7,13 +7,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
+    <h1 class='header'>Welcome to the UGA Spotify Search and Play Tool</h1>
     <select class="" id="searchSelect" name="">
+      <option value="" disabled selected>Search Type</option>
       <!--<option value="Artist" id="artistSelect">Artist</option>-->
       <option value="Album" id="albumSelect">Album</option>
       <option value="Song" id="songSelect">Song</option>
     </select>
     <div class="">
-      <h3 id='searchHeader'>Search For an Album:</h3>
+      <h3 id='searchHeader'>Select a Search Type Above</h3>
       <input type="text" id="queryInput" name="" value="" placeholder="Glory to Ol Georgia">
     </div>
      <button type="button" id="submit" name="button">Click me</button>
