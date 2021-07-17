@@ -187,7 +187,7 @@ document.getElementById('submit').addEventListener('click',function(){
     var numTracks = resultData.total_tracks;
     var albumID = resultData.id;
     document.getElementById('resultDataDiv').innerHTML = "";
-    document.getElementById('resultDataDiv').innerHTML +=`<b>The top search result for your query is an album created by ${artistName} and it was released on ${resultData.release_date} with ${resultData.total_tracks} song(s) on the album </b>`;
+    document.getElementById('resultDataDiv').innerHTML +=`<b>The top search result for your query is an album created by ${artistName} and it was released on ${resultData.release_date} with ${resultData.total_tracks} song(s) on the album. </b>`;
     document.getElementById('playerFrame').src = "https://open.spotify.com/embed/album/" + albumID;
   }
   else if (selectedSearchType == 'Artist'){
@@ -201,7 +201,7 @@ document.getElementById('submit').addEventListener('click',function(){
     var songID = resultData.id;
     var artistName = resultData.artists[0].name;
     document.getElementById('resultDataDiv').innerHTML = "";
-    document.getElementById('resultDataDiv').innerHTML +=`<b>The top search result for your query is a song named ${name} sung by ${artistName}`;
+    document.getElementById('resultDataDiv').innerHTML +=`<b>The top search result for your query is a song named ${name} sung by ${artistName}.`;
     document.getElementById('playerFrame').src = "https://open.spotify.com/embed/track/" + songID;
   }
   //end local based
