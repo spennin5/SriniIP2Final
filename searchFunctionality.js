@@ -1,12 +1,11 @@
-var urlEnd = "4uMhAVYx5R4SvILLWR1Y0J";
-var mostRecentSearch = "";
-var selectedSearchType = document.getElementById('searchSelect').value
-document.getElementById('submit').addEventListener('click',function(){
 
-  /*const settings = {
+var selectedSearchType = "Album";
+document.getElementById('submit').addEventListener('click',function(){
+  var query=document.getElementById('queryInput').value;
+  const settings = {
     "async": true,
     "crossDomain": true,
-    "url": "https://unsa-unofficial-spotify-api.p.rapidapi.com/search?query=krypton%20fanfare&count=20&type=tracks",
+    "url": "https://unsa-unofficial-spotify-api.p.rapidapi.com/search?query="+query+"&count=20&type=tracks",
     "method": "GET",
     "headers": {
       "x-rapidapi-key": "e654d75ca5msh5a28e58f26eb8ffp167829jsnf0cfcfd59b55",
@@ -15,10 +14,34 @@ document.getElementById('submit').addEventListener('click',function(){
   };
 
   $.ajax(settings).done(function (response) {
+    //change this line to whatever is returned by the api call
+    if(selectedSearchType == 'Album'){
+      let resultData = response.Results[0];
+      let artistName = resultData.artists[0].name;
+      console.log(artistName)
+      var numTracks = resultData.total_tracks;
+      var albumID = resultData.href;
+      document.getElementById('resultDataDiv').innerHTML = "";
+      document.getElementById('resultDataDiv').innerHTML +=`<b>The top search result for your query is an album created by ${artistName} and it was released on ${resultData.release_date} with ${resultData.total_tracks} song(s) on the album </b>`;
+      document.getElementById('playerFrame').src = "https://open.spotify.com/embed/" + albumID;
+    }
+    else if (selectedSearchType == 'Artist'){
 
+    }
+    else{
+      resultData = response.Results[0];
+      var songLink = resultData.external_urls.spotify;
+      var name = resultData.name;
+      var artistLink = resultData.album.artists[0].external_urls.spotify;
+      var songID = resultData.id;
+      var artistName = resultData.artists[0].name;
+      document.getElementById('resultDataDiv').innerHTML = "";
+      document.getElementById('resultDataDiv').innerHTML +=`<b>The top search result for your query is a song named ${name} sung by ${artistName}`;
+      document.getElementById('playerFrame').src = "https://open.spotify.com/embed/track/" + songID;
+    }
     console.log(response);
 
-  });*/
+  });
 })
 
 //https://rapidapi.com/shekhar1000.sc/api/unsa-unofficial-spotify-api/
@@ -106,25 +129,96 @@ var sampleData = {
 
     ]
 }
+var albumData = {
+    "AMsg": "fill this form for buying, reporting errors or customising this API : https://form.jotform.com/210354634322042",
+    "Query": "thriller",
+    "Results": [
+        {
+            "album_type": "album",
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/3fMbdgg4jU18AjLCKBhRSm"
+                    },
+                    "href": "artists/3fMbdgg4jU18AjLCKBhRSm",
+                    "id": "3fMbdgg4jU18AjLCKBhRSm",
+                    "name": "Michael Jackson",
+                    "type": "artist",
+                    "uri": "spotify:artist:3fMbdgg4jU18AjLCKBhRSm"
+                }
+            ],
+
+            "external_urls": {
+                "spotify": "https://open.spotify.com/album/1C2h7mLntPSeVYciMRTF4a"
+            },
+            "href": "albums/1C2h7mLntPSeVYciMRTF4a",
+            "id": "1C2h7mLntPSeVYciMRTF4a",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/ab67616d0000b2734121faee8df82c526cbab2be",
+                    "width": 640
+                },
+                {
+                    "height": 300,
+                    "url": "https://i.scdn.co/image/ab67616d00001e024121faee8df82c526cbab2be",
+                    "width": 300
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/ab67616d000048514121faee8df82c526cbab2be",
+                    "width": 64
+                }
+            ],
+            "name": "Thriller 25 Super Deluxe Edition",
+            "release_date": "1982-11-30",
+            "release_date_precision": "day",
+            "total_tracks": 30,
+            "type": "album",
+            "uri": "spotify:album:1C2h7mLntPSeVYciMRTF4a"
+        }
+    ]
+}
+
 document.getElementById('submit').addEventListener('click',function(){
+
   //change this line to whatever is returned by the api call
-  mostRecentSearch = selectedSearchType;
-  resultData = sampleData.Results[0];
-  var songLink = resultData.external_urls.spotify;
-  var name = resultData.name;
-  var artistLink = resultData.album.artists[0].external_urls.spotify;
-  var songID = resultsData.href;
-  document.getElementById('playerFrame').src = "https://open.spotify.com/embed/" + songID;
+  /*mostRecentSearch = selectedSearchType;
+  if(selectedSearchType == 'Album'){
+    let resultData = albumData.Results[0];
+    let artistName = resultData.artists[0].name;
+    console.log(artistName)
+    var numTracks = resultData.total_tracks;
+    var albumID = resultData.href;
+
+    document.getElementById('resultDataDiv').innerHTML +=`<b>The top search result for your query is an album created by ${artistName} and it was released on ${resultData.release_date} with ${resultData.total_tracks} song(s) on the album </b>`;
+    document.getElementById('playerFrame').src = "https://open.spotify.com/embed/" + albumID;
+  }
+  else if (selectedSearchType == 'Artist'){
+
+  }
+  else{
+    resultData = sampleData.Results[0];
+    var songLink = resultData.external_urls.spotify;
+    var name = resultData.name;
+    var artistLink = resultData.album.artists[0].external_urls.spotify;
+    var songID = resultData.href;
+    document.getElementById('playerFrame').src = "https://open.spotify.com/embed/" + songID;
+  }
+
+*/
 
 })
 
 document.getElementById('searchSelect').addEventListener('change',function(){
+  selectedSearchType = document.getElementById('searchSelect').value;
   if (selectedSearchType[0] == 'A') {
     document.getElementById('searchHeader').innerHTML = 'Search for an '+selectedSearchType;
   }
   else{
     document.getElementById('searchHeader').innerHTML = 'Search for a '+selectedSearchType;
   }
+
 })
 console.log("sample data");
 //sampleData = "'"+sampleData+"'";
