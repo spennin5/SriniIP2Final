@@ -1,0 +1,158 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Open Sans Condensed', sans-serif;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 1em;
+}
+
+/* Headings */
+
+h1,
+h2
+{
+    text-align: center;
+}
+
+/* Search Functions */
+
+#mainContent {
+    margin-top: 30%;
+}
+
+.selector{
+    text-align: center;
+    margin-top: 1em;
+}
+
+select {
+        width: 100%
+    }
+
+.dropdown {
+    min-width: 10rem;
+    padding: .5rem;
+}
+
+.search {
+    align-items: center;
+    text-align: center;
+}
+
+.search {
+        margin-top: 2em;
+        margin-bottom: 1em;
+    }
+
+.transitionAnimation {
+    animation-name: moveUp;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes moveUp {
+    from{margin-top: 30%;}
+    to{margin-top: 0%;}
+    
+}
+
+
+/* Breakpoints */
+
+@media only screen and (max-width: 576px) {
+    body {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    
+    #mainContent {
+        margin-top: 50%;
+    }
+    
+    .transitionAnimation {
+    animation-name: moveUp;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes moveUp {
+    from{margin-top: 50%;}
+    to{margin-top: 0%;}
+    
+}
+    
+    h1 {
+        font-size: 1.8em
+    }
+    
+    h2 {
+        font-size: 1.35em;
+        padding-bottom: .5em;
+    }
+    
+    select {
+        width: 100%;
+    }
+    
+    .search input {
+        margin-right: 1em;
+    }
+    
+    .resultDataDiv {
+        margin-top: 2em;
+    }
+    
+    b {
+        font-size: .85em;
+    }
+    
+    iframe {
+        margin-top: 1em;
+    }
+
+}
+
+@media only screen and (min-width: 576px) {
+    
+    h1 {
+        font-size: 2.3em;
+    }
+    
+    h2 {
+        font-size: 1.75em;
+        margin-bottom: .5em;
+    }
+    .search {
+    }
+    
+    .search input {
+        margin-right: .75em;
+    }
+    
+    .search button {
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    
+    b {
+        font-size: .95em;
+    }
+    
+    .resultDataDiv {
+        margin-bottom: 1em;
+    }
+    
+}
+
+@media only screen and (min-width: 1200px) {
+    
+    body {
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+}
