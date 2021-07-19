@@ -13,19 +13,19 @@
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet">
   </head>
-    
+
   <body>
       <div id="mainContent" class="container">
           <h1 class="header d-flex-content-center">UGA Spotify Search and Play</h1>
           <div class="selector d-flex-content-center">
             <select class="dropdown" id="searchSelect" name="">
                 <option class="dropdown-item" value="" disabled selected>Search Type</option>
-                <option class="dropdown-item" value="Artist" id="artistSelect">Artist</option>
+                <!--<option class="dropdown-item" value="Artist" id="artistSelect">Artist</option>-->
                 <option class="dropdown-item" value="Album" id="albumSelect">Album</option>
                 <option class="dropdown-item" value="Song" id="songSelect">Song</option>'
             </select>
           </div>
-          
+
           <div class="search container">
               <h2 id='searchHeader'>Select a Search Type Above</h2>
               <div class="row">
@@ -33,12 +33,12 @@
               <button class="col-3 col-sm-6 offset-sm-3 btn searchButton" type="button" id="submit" name="button" style="visibility:hidden;">Search</button>
               </div>
           </div>
-          
-          
-          
+
+
+
           <div class="resultDataDiv" id="resultDataDiv">
           </div>
-      
+
         <iframe id="playerFrame" width="100%" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
       </div>
   </body>
