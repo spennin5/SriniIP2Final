@@ -3,17 +3,21 @@ var selectedSearchType = "Album";
 
 document.getElementById('submit').addEventListener('click',function(){
   var query=document.getElementById('queryInput').value;
+  console.log("Youre searching for "+query);
   if(query===""){
     alert("Please Type in a Search Query");
   }else{
     var searchType = "";
     if(selectedSearchType==="Album"){
+      console.log("Searching for an album?");
       searchType = "albums";
     }
     if(selectedSearchType==="Song"){
+      console.log("Searching for a song?");
       searchType = "tracks";
     }
     if(selectedSearchType==="Artist"){
+      console.log("Searching for an artist?");
       searchType = "artists";
     }
     const settings = {
@@ -27,7 +31,7 @@ document.getElementById('submit').addEventListener('click',function(){
       }
     };
     //AJAX based
-    /*
+
     $.ajax(settings).done(function (response) {
       //change this line to whatever is returned by the api call
       if(selectedSearchType == 'Album'){
@@ -35,7 +39,7 @@ document.getElementById('submit').addEventListener('click',function(){
         let artistName = resultData.artists[0].name;
         console.log(artistName)
         var numTracks = resultData.total_tracks;
-        var albumID = resultData.href;
+        var albumID = resultData.id;
         document.getElementById('resultDataDiv').innerHTML = "";
         document.getElementById('resultDataDiv').innerHTML +=`<b>The top search result for your query is an album created by ${artistName} and it was released on ${resultData.release_date} with ${resultData.total_tracks} song(s) on the album </b>`;
         document.getElementById('playerFrame').src = "https://open.spotify.com/embed/album/" + albumID;
@@ -56,9 +60,11 @@ document.getElementById('submit').addEventListener('click',function(){
       }
       console.log(response);
 
-    });*/
+    });
     //end AJAX based
+
     //local based
+    /*
     var sampleData = {
         "AMsg": "fill this form for buying, reporting errors or customising this API : https://form.jotform.com/210354634322042",
         "Query": "krypton fanfare",
@@ -217,6 +223,7 @@ document.getElementById('submit').addEventListener('click',function(){
       document.getElementById('resultDataDiv').innerHTML +=`<b>The top search result for your query is a song named ${name} sung by ${artistName}.`;
       document.getElementById('playerFrame').src = "https://open.spotify.com/embed/track/" + songID;
     }
+    */
     //end local based
   }
 
@@ -229,6 +236,8 @@ document.getElementById('submit').addEventListener('click',function(){
 
 document.getElementById('searchSelect').addEventListener('change',function(){
   selectedSearchType = document.getElementById('searchSelect').value;
+  console.log("Searching: "+selectedSearchType);
+  console.log("Making results visible...");
   document.getElementById('queryInput').style.visibility = 'visible';
   document.getElementById('submit').style.visibility = 'visible';
   if (selectedSearchType[0] == 'A') {
