@@ -31,7 +31,7 @@ h2
 }
 
 select {
-        width: 100%
+    width: 100%;
     }
 
 .dropdown {
@@ -59,6 +59,23 @@ select {
     from{margin-top: 30%;}
     to{margin-top: 0%;}
     
+}
+
+select,
+button {
+    background-color: #BA0C2F;
+    color: #fff;
+}
+
+.spotify {
+    display: inline;
+    color: #1DB954;
+}
+
+.georgiaG {
+    color: #BA0C2F;
+    display: inline;
+    font-weight: bold;
 }
 
 
